@@ -1,0 +1,59 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem 6%;
+}
+
+.nav-logo .logo-text {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--color-black);
+  letter-spacing: -2px;
+  /* Add the logo icon shape matching sample */
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--color-grey);
+}
+
+.contact-btn {
+  background-color: var(--color-white);
+  color: var(--color-black) !important;
+  padding: 0.7rem 1.8rem;
+  border-radius: 30px;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 1.5rem 5%;
+  }
+  
+  .nav-links {
+    display: none; /* Hide on small screens for now, or adapt later */
+  }
+}
