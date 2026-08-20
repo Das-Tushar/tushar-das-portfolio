@@ -1,0 +1,9 @@
+- [x] Initialize Vite React project
+- [x] Install dependencies (`framer-motion`, `lucide-react`)
+- [x] Generate placeholder portrait image
+- [x] Set up base styles and fonts (`index.css`)
+- [x] Create `SocialIcons` component (with anti-gravity animation)
+- [x] Create `Navbar` component
+- [x] Create `Hero` component (with clip-path and animations)
+- [x] Assemble `App.jsx`
+- [x] Initialize Git and commit
