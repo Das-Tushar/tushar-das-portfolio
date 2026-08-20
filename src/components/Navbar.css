@@ -1,59 +1,87 @@
+.navbar-container {
+  width: 100%;
+  padding: 2.2rem 4rem 1rem 4rem;
+  z-index: 10;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2.5rem 6%;
+  width: 100%;
 }
 
-.nav-logo .logo-text {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: var(--color-black);
-  letter-spacing: -2px;
-  /* Add the logo icon shape matching sample */
+.nav-logo {
   display: flex;
   align-items: center;
+  text-decoration: none;
+  color: var(--color-black);
+  transition: transform 0.2s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  color: var(--color-black);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2.8rem;
 }
 
-.nav-links a {
+.nav-link {
   text-decoration: none;
   color: var(--color-white);
   font-weight: 600;
   font-size: 0.95rem;
-  transition: color 0.3s;
+  letter-spacing: 0.2px;
+  transition: opacity 0.2s ease;
 }
 
-.nav-links a:hover {
-  color: var(--color-grey);
+.nav-link:hover {
+  opacity: 0.8;
 }
 
 .contact-btn {
+  text-decoration: none;
   background-color: var(--color-white);
-  color: var(--color-black) !important;
-  padding: 0.7rem 1.8rem;
-  border-radius: 30px;
-  font-weight: 700 !important;
-  font-size: 0.85rem !important;
-  transition: transform 0.3s, box-shadow 0.3s;
+  color: var(--color-black);
+  padding: 0.75rem 1.8rem;
+  border-radius: 9999px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.8px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
 .contact-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
+  background-color: #f0f0f0;
 }
 
 @media (max-width: 900px) {
-  .navbar {
-    padding: 1.5rem 5%;
+  .navbar-container {
+    padding: 1.5rem 1.5rem 0.5rem 1.5rem;
   }
-  
+
   .nav-links {
-    display: none; /* Hide on small screens for now, or adapt later */
+    gap: 1.2rem;
+  }
+
+  .nav-link {
+    display: none; /* Keep clean on small mobile, show contact button */
+  }
+
+  .contact-btn {
+    padding: 0.55rem 1.2rem;
+    font-size: 0.75rem;
   }
 }
