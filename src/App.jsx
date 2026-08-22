@@ -5,6 +5,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import MaskWipeReveal from './components/MaskWipeReveal';
+import Certificates from './components/Certificates';
 import './index.css';
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
             <Projects />
           </MaskWipeReveal>
           <MaskWipeReveal zIndex={50}>
+            <Certificates />
+          </MaskWipeReveal>
+          <MaskWipeReveal zIndex={60}>
             <Contact />
           </MaskWipeReveal>
         </div>

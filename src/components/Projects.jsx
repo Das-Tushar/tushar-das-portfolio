@@ -1,5 +1,4 @@
 import React from 'react';
-import { BookOpen } from 'lucide-react';
 import FadeAndReveal from './FadeAndReveal';
 import './Sections.css';
 
@@ -14,20 +13,38 @@ const Projects = () => {
         <div className="projects-gallery" style={{ maxWidth: '1100px', margin: '0 auto', width: '100%', padding: '1rem 0 2rem 0' }}>
           
           {/* CS Nexus Card */}
-          <div className="project-card">
-            <div className="project-image" style={{ background: 'linear-gradient(45deg, #111, #102a45)', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <BookOpen size={64} color="rgba(255,255,255,0.2)" />
-            </div>
-            <div className="project-content" style={{ padding: '1.5rem' }}>
-              <h3 className="project-title" style={{ fontSize: '1.5rem' }}>CS Nexus</h3>
-              <p className="project-tags">React | Git | GitHub</p>
-              <p style={{ color: 'var(--color-dark-grey)', marginBottom: '1.5rem', lineHeight: '1.6' }}>
-                An interactive, open-source computer science educational hub.
-              </p>
-              <div className="project-actions">
-                <a href="https://cs-nexus.vercel.app" target="_blank" rel="noopener noreferrer" className="btn-project btn-live">Live Demo</a>
-                <a href="https://github.com/Das-Tushar/cs-nexus.git" target="_blank" rel="noopener noreferrer" className="btn-project btn-github">GitHub Repo</a>
+          <div className="project-card" style={{ display: 'flex', flexDirection: 'column', alignSelf: 'stretch' }}>
+            <div className="project-content" style={{ padding: '2.5rem', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+                <h3 className="project-title" style={{ fontSize: '1.6rem', marginBottom: 0 }}>CS Nexus</h3>
+                <div className="project-actions">
+                  <a href="https://cs-nexus.vercel.app" target="_blank" rel="noopener noreferrer" className="btn-project btn-live" style={{ padding: '0.4rem 1.2rem' }}>Live Demo</a>
+                  <a href="https://github.com/Das-Tushar/cs-nexus.git" target="_blank" rel="noopener noreferrer" className="btn-project btn-github" style={{ padding: '0.4rem 1.2rem' }}>GitHub</a>
+                </div>
               </div>
+              <p className="project-tags" style={{ marginBottom: '2rem' }}>React | Git | GitHub</p>
+              
+              <ul style={{ color: 'var(--color-dark-grey)', lineHeight: '1.7', paddingLeft: '1.2rem', fontSize: '0.95rem', listStyleType: 'disc' }}>
+                <li style={{ marginBottom: '1rem' }}>Engineered an open-source computer science learning platform in React, creating a community-driven knowledge repository.</li>
+                <li style={{ marginBottom: '1rem' }}>Designed a modular frontend architecture to optimize component rendering and ensure seamless navigation.</li>
+                <li>Implemented a continuous deployment pipeline using Git, GitHub, and Vercel for automated live builds.</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Solar Grid Card */}
+          <div className="project-card" style={{ display: 'flex', flexDirection: 'column', alignSelf: 'stretch' }}>
+            <div className="project-content" style={{ padding: '2.5rem', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+              <div style={{ marginBottom: '0.5rem' }}>
+                <h3 className="project-title" style={{ fontSize: '1.6rem', marginBottom: 0 }}>A decentralized interconnected solar home system</h3>
+              </div>
+              <p className="project-tags" style={{ marginBottom: '2rem' }}>Arduino | Sensors</p>
+              
+              <ul style={{ color: 'var(--color-dark-grey)', lineHeight: '1.7', paddingLeft: '1.2rem', fontSize: '0.95rem', listStyleType: 'disc' }}>
+                <li style={{ marginBottom: '1rem' }}>Engineered a decentralized solar grid using Arduino and sensors for localized, off-grid energy distribution.</li>
+                <li style={{ marginBottom: '1rem' }}>Designed a responsive microcontroller architecture to optimize sensor data processing and power management.</li>
+                <li>Implemented an automated monitoring loop for real-time voltage adjustments and rapid fault detection.</li>
+              </ul>
             </div>
           </div>
           

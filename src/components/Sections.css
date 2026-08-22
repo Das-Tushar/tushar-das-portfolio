@@ -248,7 +248,8 @@
 #about.sticky-section { z-index: 20; }
 #skills.sticky-section { z-index: 30; }
 #projects.sticky-section { z-index: 40; }
-#contact.sticky-section { z-index: 50; border-radius: 0 0 20px 20px; }
+#certificates.sticky-section { z-index: 50; }
+#contact.sticky-section { z-index: 60; border-radius: 0 0 20px 20px; }
 
 
 /* ABOUT SECTION: Two-Column Bento Layout */
@@ -602,4 +603,36 @@
 .btn-submit:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/* CERTIFICATES SECTION HORIZONTAL SCROLL */
+.certificates-gallery {
+  display: flex;
+  overflow-x: auto;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.certificates-gallery::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.certificate-card {
+  flex-shrink: 0;
+  width: 400px;
+  scroll-snap-align: center;
+}
+
+@media (max-width: 1024px) {
+  .certificate-card {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .certificate-card {
+    width: 85vw;
+  }
 }
