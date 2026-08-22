@@ -87,6 +87,7 @@
   align-items: center;
   position: relative;
   height: calc(100vh - 120px);
+  height: calc(100dvh - 120px);
 }
 
 .glow-backdrop {
