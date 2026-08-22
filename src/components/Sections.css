@@ -125,6 +125,8 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding: 2rem 0 4rem 0;
+  width: 100%;
+  max-width: 100%;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE and Edge */
 }
@@ -135,6 +137,7 @@
 
 .project-card {
   min-width: 600px;
+  max-width: 90vw;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -612,6 +615,8 @@
   gap: 2rem;
   padding-bottom: 2rem;
   scroll-snap-type: x mandatory;
+  width: 100%;
+  max-width: 100%;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
 }
@@ -622,6 +627,7 @@
 .certificate-card {
   flex-shrink: 0;
   width: 400px;
+  max-width: 90vw;
   scroll-snap-align: center;
 }
 

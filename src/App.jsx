@@ -10,7 +10,7 @@ import './index.css';
 
 function App() {
   return (
-    <main style={{ height: '100dvh', overflowY: 'auto', scrollSnapType: 'y proximity', overflowX: 'hidden', scrollBehavior: 'smooth', overscrollBehavior: 'none', WebkitOverflowScrolling: 'touch' }}>
+    <main style={{ height: '100dvh', overflowY: 'auto', scrollSnapType: 'y proximity', overflowX: 'hidden', scrollBehavior: 'smooth', overscrollBehavior: 'none', WebkitOverflowScrolling: 'touch', width: '100%', maxWidth: '100vw' }}>
       <div className="portfolio-container">
         <div className="content-wrapper">
           <Navbar />

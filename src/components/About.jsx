@@ -4,7 +4,7 @@ import './Sections.css';
 
 const About = () => {
   return (
-    <section id="about" className="section-wrapper sticky-section sticky-layer" style={{ backgroundColor: 'var(--color-panel)', backgroundImage: 'radial-gradient(circle at center, rgba(138,43,226,0.05) 0%, var(--color-panel) 70%)', height: '100dvh', width: '100%', overflow: 'hidden', padding: '4rem 2rem 2rem 2rem', justifyContent: 'center' }}>
+    <section id="about" className="section-wrapper sticky-section sticky-layer" style={{ backgroundColor: 'var(--color-panel)', backgroundImage: 'radial-gradient(circle at center, rgba(138,43,226,0.05) 0%, var(--color-panel) 70%)', height: '100dvh', width: '100%', overflow: 'hidden', padding: '4rem 1rem 2rem 1rem', justifyContent: 'center' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
         <h2 className="section-title">About Me</h2>
       </div>
