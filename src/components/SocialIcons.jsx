@@ -19,7 +19,9 @@ const SocialIcons = () => {
     <div className="social-icons">
       {/* Email / @ Icon */}
       <motion.a
-        href="mailto:placeholder@example.com"
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=tushardas130107@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
         aria-label="Email"
         className="social-icon"
         variants={floatVariant(0)}
@@ -44,7 +46,7 @@ const SocialIcons = () => {
 
       {/* GitHub Icon */}
       <motion.a
-        href="https://github.com"
+        href="https://github.com/Das-Tushar"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
@@ -70,7 +72,7 @@ const SocialIcons = () => {
 
       {/* LinkedIn Icon */}
       <motion.a
-        href="https://linkedin.com"
+        href="https://linkedin.com/in/tushar-das-834227380"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"
