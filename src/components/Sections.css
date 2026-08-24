@@ -20,6 +20,34 @@
   -webkit-text-fill-color: transparent;
 }
 
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-wrapper {
+    padding: 3rem 4%;
+  }
+
+  .narrative-paragraph {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .project-content {
+    padding: 1.2rem !important;
+  }
+
+  .bento-card {
+    padding: 1.2rem;
+  }
+
+  .edu-card {
+    padding: 0.8rem 1rem;
+  }
+}
+
 /* SKILLS SECTION: Bento Box Grid */
 .bento-grid {
   display: grid;
@@ -235,9 +263,21 @@
   background-color: var(--color-panel);
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center content within 100vh container */
+  justify-content: center;
   overflow: hidden;
   transform: translateZ(0);
+  will-change: transform;
+}
+
+/* On mobile, allow inner scrolling when content overflows 100dvh */
+@media (max-width: 768px) {
+  .sticky-section {
+    justify-content: flex-start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 3rem;
+    padding-bottom: 6rem;
+  }
 }
 
 /* Add box-shadow for 3D depth when sliding over */

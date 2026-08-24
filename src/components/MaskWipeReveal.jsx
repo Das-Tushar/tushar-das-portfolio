@@ -7,7 +7,7 @@ const MaskWipeReveal = ({ children, zIndex }) => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
-      style={{ position: 'sticky', top: 0, height: '100dvh', width: '100%', zIndex, scrollSnapAlign: 'start', backgroundColor: 'transparent' }}
+      style={{ position: 'sticky', top: 0, height: '100dvh', width: '100%', zIndex, scrollSnapAlign: 'start', backgroundColor: 'transparent', willChange: 'transform' }}
     >
       <motion.div
         variants={{

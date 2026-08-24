@@ -5,7 +5,7 @@ import './Sections.css';
 
 const Skills = () => {
   return (
-    <section id="skills" className="section-wrapper sticky-section sticky-layer">
+    <section id="skills" className="section-wrapper sticky-section sticky-layer" style={{ backgroundColor: 'var(--color-panel)' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
         <h2 className="section-title">Skills</h2>
       </div>
