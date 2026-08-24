@@ -9,9 +9,6 @@
   transform: translateX(-50%);
   pointer-events: auto;
   border-radius: 20px 20px 0 0;
-  background-color: rgba(17, 17, 22, 0.9);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
 .navbar {
