@@ -6,7 +6,7 @@ import './Sections.css';
 const Skills = () => {
   return (
     <section id="skills" className="sticky-section sticky-layer" style={{ position: 'relative', backgroundColor: 'var(--color-panel)', height: '100dvh', width: '100%', overflow: 'hidden' }}>
-      <div className="section-inner" style={{ position: 'absolute', inset: 0, height: '100%', width: '100%', overflowY: 'auto', WebkitOverflowScrolling: 'touch', paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '1rem', paddingRight: '1rem' }}>
+      <div style={{ position: 'absolute', inset: 0, height: '100%', width: '100%', overflowY: 'auto', WebkitOverflowScrolling: 'touch', paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '1rem', paddingRight: '1rem' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
           <h2 className="section-title">Skills</h2>
         </div>
