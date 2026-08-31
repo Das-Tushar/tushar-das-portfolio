@@ -1,7 +1,19 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Mail } from 'lucide-react';
-import FadeAndReveal from './FadeAndReveal';
 import './Sections.css';
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12 }
+  }
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+};
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -14,7 +26,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('submitting');
-    
+
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -40,22 +52,29 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-wrapper sticky-section sticky-layer" style={{ backgroundColor: 'var(--color-panel)', height: '100dvh', width: '100%', overflow: 'hidden', padding: '4rem 1rem 2rem 1rem', justifyContent: 'center' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
+    <motion.section
+      id="contact"
+      className="section-wrapper"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+    >
+      <motion.div variants={childVariants} style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
         <h2 className="section-title">Get In Touch</h2>
-      </div>
-      
+      </motion.div>
+
       <div className="contact-grid">
         {/* Left Column: Contact Info */}
         <div className="contact-left">
-          <FadeAndReveal>
+          <motion.div variants={childVariants}>
             <p style={{ color: 'var(--color-dark-grey)', fontSize: '1rem', lineHeight: '1.6', marginBottom: '2rem' }}>
               I'm always open to discussing full-stack development roles, open-source collaborations, or cybersecurity opportunities. Let's build something extraordinary together.
             </p>
-          </FadeAndReveal>
-          
+          </motion.div>
+
           <div className="contact-methods">
-            <FadeAndReveal>
+            <motion.div variants={childVariants}>
               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tushardas130107@gmail.com" target="_blank" rel="noopener noreferrer" className="contact-method-card">
                 <div className="contact-icon-wrapper">
                   <Mail size={24} />
@@ -65,9 +84,9 @@ const Contact = () => {
                   <p>tushardas130107@gmail.com</p>
                 </div>
               </a>
-            </FadeAndReveal>
-            
-            <FadeAndReveal>
+            </motion.div>
+
+            <motion.div variants={childVariants}>
               <a href="https://github.com/Das-Tushar" target="_blank" rel="noopener noreferrer" className="contact-method-card">
                 <div className="contact-icon-wrapper">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -79,9 +98,9 @@ const Contact = () => {
                   <p>Das-Tushar</p>
                 </div>
               </a>
-            </FadeAndReveal>
-            
-            <FadeAndReveal>
+            </motion.div>
+
+            <motion.div variants={childVariants}>
               <a href="https://www.linkedin.com/in/tushar-das-834227380" target="_blank" rel="noopener noreferrer" className="contact-method-card">
                 <div className="contact-icon-wrapper">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -93,66 +112,72 @@ const Contact = () => {
                   <p>Let's Connect</p>
                 </div>
               </a>
-            </FadeAndReveal>
+            </motion.div>
           </div>
         </div>
 
         {/* Right Column: Web3Forms */}
         <div className="contact-right">
-          <FadeAndReveal>
+          <motion.div variants={childVariants}>
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-group">
                 <label htmlFor="name">Name</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   id="name"
-                  name="name" 
-                  className="form-input" 
-                  placeholder="Soma Das" 
-                  required 
+                  name="name"
+                  className="form-input"
+                  placeholder="Soma Das"
+                  required
                   value={formData.name}
                   onChange={handleChange}
                 />
               </div>
-              
+
               <div className="form-group">
                 <label htmlFor="email">Email</label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   id="email"
-                  name="email" 
-                  className="form-input" 
-                  placeholder="somadas@gmail.com" 
-                  required 
+                  name="email"
+                  className="form-input"
+                  placeholder="somadas@gmail.com"
+                  required
                   value={formData.email}
                   onChange={handleChange}
                 />
               </div>
-              
+
               <div className="form-group">
                 <label htmlFor="message">Message</label>
-                <textarea 
+                <textarea
                   id="message"
-                  name="message" 
-                  className="form-input form-textarea" 
-                  placeholder="Hello, I'd like to talk about..." 
+                  name="message"
+                  className="form-input form-textarea"
+                  placeholder="Hello, I'd like to talk about..."
                   required
                   value={formData.message}
                   onChange={handleChange}
                 ></textarea>
               </div>
-              
-              <button type="submit" className="btn-submit" disabled={status === 'submitting' || status === 'success'}>
+
+              <motion.button 
+                type="submit" 
+                className="btn-submit" 
+                disabled={status === 'submitting' || status === 'success'}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 {status === 'idle' && 'Send Message'}
                 {status === 'submitting' && 'Sending...'}
                 {status === 'success' && 'Message Sent!'}
                 {status === 'error' && 'Error! Try Again'}
-              </button>
+              </motion.button>
             </form>
-          </FadeAndReveal>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

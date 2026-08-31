@@ -1,15 +1,3 @@
-/* Global padding for sections */
-.section-wrapper {
-  padding: 6rem 6%;
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-}
-
 .section-title {
   font-size: 3rem;
   font-weight: 800;
@@ -22,12 +10,8 @@
 
 @media (max-width: 768px) {
   .section-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 1rem;
-  }
-
-  .section-wrapper {
-    padding: 3rem 4%;
   }
 
   .narrative-paragraph {
@@ -49,6 +33,12 @@
 }
 
 /* SKILLS SECTION: Bento Box Grid */
+#skills {
+  padding-top: 6.5rem;
+  padding-bottom: 4rem;
+  justify-content: flex-start;
+}
+
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -56,23 +46,33 @@
   gap: 1rem;
   max-width: 1100px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .bento-card {
-  background: rgba(20, 20, 25, 0.6);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 20px;
   padding: 2rem;
-  transition: all 0.3s ease;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
 }
 
 .bento-card:hover {
-  border-color: var(--color-purple);
-  box-shadow: 0 0 25px rgba(138, 43, 226, 0.2);
-  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.035);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 15px rgba(138, 43, 226, 0.06);
+  transform: translateY(-3px);
+}
+
+.bento-desc {
+  color: var(--color-dark-grey);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
 }
 
 .bento-card.span-2 {
@@ -151,7 +151,9 @@
   display: flex;
   gap: 2rem;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
   padding: 2rem 0 4rem 0;
   width: 100%;
   max-width: 100%;
@@ -166,18 +168,42 @@
 .project-card {
   min-width: 600px;
   max-width: 90vw;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 20px;
   scroll-snap-align: center;
   flex-shrink: 0;
   overflow: hidden;
-  transition: border-color 0.3s ease;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Proximity Spotlight Glow Effect - Subtle & Minimal */
+.spotlight-card-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-glow {
+  opacity: 0;
+  background: radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(45, 212, 191, 0.07), rgba(138, 43, 226, 0.02) 50%, transparent 80%);
+  transition: opacity 0.3s ease;
+}
+
+/* Only activate spotlight on devices with a real hover pointer (not touch) */
+@media (hover: hover) and (pointer: fine) {
+  .spotlight-card-wrapper:hover .spotlight-glow {
+    opacity: 0.65;
+  }
 }
 
 .project-card:hover {
-  border-color: var(--color-lavender);
+  background: rgba(255, 255, 255, 0.035);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 15px rgba(138, 43, 226, 0.06);
 }
 
 .project-image {
@@ -253,46 +279,30 @@
   }
 }
 
-/* Sticky Section Base */
-.sticky-section {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  height: 100dvh;
+/* Section Base - Perfect Section Framing without Bleed */
+.section-wrapper {
+  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
-  background-color: var(--color-panel);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
-  transform: translateZ(0);
-  will-change: transform;
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 8rem; /* pt-32 (128px) - clears floating navbar perfectly */
+  padding-bottom: 4rem; /* pb-16 (64px) */
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-/* On mobile, allow inner scrolling when content overflows 100dvh */
-@media (max-width: 768px) {
-  .sticky-section {
-    justify-content: flex-start;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-top: 3rem;
-    padding-bottom: 6rem;
+@media (max-width: 900px) {
+  .section-wrapper {
+    padding-top: 6.5rem;
+    padding-bottom: 3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
-
-/* Add box-shadow for 3D depth when sliding over */
-.sticky-layer {
-  box-shadow: 0 -15px 30px rgba(0, 0, 0, 0.5);
-  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Extra definition */
-}
-
-/* Z-Index Stacking */
-#home.sticky-section { z-index: 10; border-radius: 20px 20px 0 0; }
-#about.sticky-section { z-index: 20; }
-#skills.sticky-section { z-index: 30; }
-#projects.sticky-section { z-index: 40; }
-#certificates.sticky-section { z-index: 50; }
-#contact.sticky-section { z-index: 60; border-radius: 0 0 20px 20px; }
 
 
 /* ABOUT SECTION: Two-Column Bento Layout */
@@ -346,18 +356,21 @@
 }
 
 .edu-card {
-  background: rgba(20, 20, 25, 0.6);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
-  padding: 1rem 1.2rem;
-  transition: all 0.3s ease;
+  padding: 1.2rem 1.4rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .edu-card:hover {
-  border-color: rgba(212, 165, 255, 0.3);
-  box-shadow: 0 5px 15px rgba(138, 43, 226, 0.1);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 20px rgba(138, 43, 226, 0.15);
+  transform: translateY(-3px);
 }
 
 .edu-title {
@@ -539,21 +552,24 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  background: rgba(20, 20, 25, 0.6);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
-  padding: 1.5rem;
+  padding: 1.4rem;
   margin-bottom: 1rem;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   color: var(--color-white);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 .contact-method-card:hover {
-  border-color: var(--color-lavender);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(138, 43, 226, 0.15);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 20px rgba(138, 43, 226, 0.15);
 }
 
 .contact-icon-wrapper {
@@ -578,15 +594,16 @@
 }
 
 .contact-form {
-  background: rgba(20, 20, 25, 0.6);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 24px;
-  padding: 2rem;
+  padding: 2.2rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
 .form-group {
@@ -654,7 +671,9 @@
   overflow-x: auto;
   gap: 2rem;
   padding-bottom: 2rem;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
   width: 100%;
   max-width: 100%;
   scrollbar-width: none; /* Firefox */
@@ -669,6 +688,21 @@
   width: 400px;
   max-width: 90vw;
   scroll-snap-align: center;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.certificate-card:hover {
+  background: rgba(255, 255, 255, 0.035);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 15px rgba(138, 43, 226, 0.06);
 }
 
 @media (max-width: 1024px) {
@@ -681,4 +715,21 @@
   .certificate-card {
     width: 85vw;
   }
+}
+
+/* Micro-Interaction Polish - Tactile Active Press Feedback */
+.btn-project,
+.btn-submit,
+.btn-cv,
+.contact-method-card,
+.social-icon-link {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-project:active,
+.btn-submit:active,
+.btn-cv:active,
+.contact-method-card:active,
+.social-icon-link:active {
+  transform: scale(0.95);
 }

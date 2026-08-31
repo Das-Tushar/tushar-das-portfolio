@@ -1,21 +1,41 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Terminal, Shield, Code, Server } from 'lucide-react';
-import FadeAndReveal from './FadeAndReveal';
+import SpotlightCard from './SpotlightCard';
 import './Sections.css';
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12 }
+  }
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+};
 
 const Skills = () => {
   return (
-    <section id="skills" className="section-wrapper sticky-section sticky-layer" style={{ backgroundColor: 'var(--color-panel)' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
+    <motion.section
+      id="skills"
+      className="section-wrapper"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.15 }}
+    >
+      <motion.div variants={childVariants} style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
         <h2 className="section-title">Skills</h2>
-      </div>
-      
+      </motion.div>
+
       <div className="bento-grid">
         {/* Row 1, Col 1: Core Programming */}
-        <FadeAndReveal>
-          <div className="bento-card">
+        <motion.div variants={childVariants}>
+          <SpotlightCard className="bento-card">
             <h3 className="bento-title"><Code className="bento-icon" /> Core Programming Languages</h3>
-            <p style={{ color: 'var(--color-dark-grey)', marginBottom: '1.5rem' }}>
+            <p className="bento-desc">
               The foundational languages I use for data structures, backend logic, and scripting.
             </p>
             <div className="floating-icons">
@@ -26,14 +46,14 @@ const Skills = () => {
               <div className="floating-pill">SQL</div>
               <div className="floating-pill">HTML5 & CSS</div>
             </div>
-          </div>
-        </FadeAndReveal>
-        
+          </SpotlightCard>
+        </motion.div>
+
         {/* Row 1, Col 2: Cybersecurity */}
-        <FadeAndReveal>
-          <div className="bento-card">
+        <motion.div variants={childVariants}>
+          <SpotlightCard className="bento-card">
             <h3 className="bento-title"><Shield className="bento-icon" /> Cybersecurity & Network</h3>
-            <p style={{ color: 'var(--color-dark-grey)', marginBottom: '1.5rem' }}>
+            <p className="bento-desc">
               Cybersecurity principles and practices for building and maintaining resilient systems.
             </p>
             <div className="floating-icons">
@@ -43,14 +63,14 @@ const Skills = () => {
               <div className="floating-pill">OWASP Top 10</div>
               <div className="floating-pill">Secure Coding</div>
             </div>
-          </div>
-        </FadeAndReveal>
-        
+          </SpotlightCard>
+        </motion.div>
+
         {/* Row 2, Col 1: IoT & Hardware */}
-        <FadeAndReveal>
-          <div className="bento-card">
+        <motion.div variants={childVariants}>
+          <SpotlightCard className="bento-card">
             <h3 className="bento-title"><Server className="bento-icon" /> IoT & Hardware</h3>
-            <p style={{ color: 'var(--color-dark-grey)', marginBottom: '1.5rem' }}>
+            <p className="bento-desc">
               Building embedded systems and interfacing with hardware for real-world applications.
             </p>
             <div className="floating-icons">
@@ -60,14 +80,14 @@ const Skills = () => {
               <div className="floating-pill">Linux</div>
               <div className="floating-pill">Sensors</div>
             </div>
-          </div>
-        </FadeAndReveal>
+          </SpotlightCard>
+        </motion.div>
 
         {/* Row 2, Col 2: Tools & Developer Workflow */}
-        <FadeAndReveal>
-          <div className="bento-card">
+        <motion.div variants={childVariants}>
+          <SpotlightCard className="bento-card">
             <h3 className="bento-title"><Terminal className="bento-icon" /> Tools & Workflow</h3>
-            <p style={{ color: 'var(--color-dark-grey)', marginBottom: '1.5rem' }}>
+            <p className="bento-desc">
               The essential tools and platforms I use to build, test, and deploy applications.
             </p>
             <div className="floating-icons">
@@ -77,10 +97,10 @@ const Skills = () => {
               <div className="floating-pill">Vercel</div>
               <div className="floating-pill">CI/CD Pipelines</div>
             </div>
-          </div>
-        </FadeAndReveal>
+          </SpotlightCard>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

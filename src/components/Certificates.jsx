@@ -1,6 +1,19 @@
 import React from 'react';
-import FadeAndReveal from './FadeAndReveal';
+import { motion } from 'framer-motion';
+import SpotlightCard from './SpotlightCard';
 import './Sections.css';
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15 }
+  }
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+};
 
 const Certificates = () => {
   const certificates = [
@@ -37,20 +50,27 @@ const Certificates = () => {
   ];
 
   return (
-    <section id="certificates" className="section-wrapper sticky-section sticky-layer" style={{ paddingBottom: '2rem', backgroundColor: 'var(--color-panel)' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
+    <motion.section
+      id="certificates"
+      className="section-wrapper"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+    >
+      <motion.div variants={childVariants} style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
         <h2 className="section-title">Certificates</h2>
-      </div>
-      
-      <FadeAndReveal>
+      </motion.div>
+
+      <motion.div variants={childVariants}>
         <div className="certificates-gallery" style={{ maxWidth: '1100px', margin: '0 auto', padding: '1rem 0 2rem 0' }}>
-          
+
           {certificates.map((cert) => (
-            <div key={cert.id} className="project-card certificate-card" style={{ display: 'flex', flexDirection: 'column' }}>
+            <SpotlightCard key={cert.id} className="project-card certificate-card" style={{ display: 'flex', flexDirection: 'column' }}>
               <div style={{ width: '100%', height: '224px', background: 'rgba(0,0,0,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                <img 
-                  src={cert.image} 
-                  alt={`${cert.title} Certificate`} 
+                <img
+                  src={cert.image}
+                  alt={`${cert.title} Certificate`}
                   style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '0.5rem' }}
                   onError={(e) => {
                     e.target.style.display = 'none';
@@ -69,12 +89,12 @@ const Certificates = () => {
                   {cert.title}
                 </h3>
               </div>
-            </div>
+            </SpotlightCard>
           ))}
-          
+
         </div>
-      </FadeAndReveal>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 

@@ -29,7 +29,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="hero">
+    <section id="home" className="hero">
       <motion.div 
         className="hero-background-glow"
         style={{ scale: bgScale, y: bgY }}
@@ -51,14 +51,16 @@ const Hero = () => {
         </motion.p>
         
         <motion.div className="btn-container" variants={itemVariants}>
-          <a 
+          <motion.a 
             href="/Tushar_Das_CV.pdf" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="btn-cv"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             View & Download CV
-          </a>
+          </motion.a>
         </motion.div>
 
         <motion.div variants={itemVariants} className="icons-container">
