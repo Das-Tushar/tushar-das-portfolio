@@ -79,6 +79,9 @@
   border-radius: 999px;
   text-decoration: none;
   font-weight: 600;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
   border: 2px solid var(--color-purple);
   transition: transform 0.15s ease, background 0.3s ease, box-shadow 0.3s ease;
 }

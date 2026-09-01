@@ -47,6 +47,7 @@ const Contact = () => {
         setStatus('error');
       }
     } catch (error) {
+      console.error('Form submission failed:', error);
       setStatus('error');
     }
   };

@@ -75,8 +75,21 @@ const Projects = () => {
           {/* Solar Grid Card */}
           <SpotlightCard className="project-card" style={{ display: 'flex', flexDirection: 'column', alignSelf: 'stretch' }}>
             <div className="project-content" style={{ padding: '2.5rem', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-              <div style={{ marginBottom: '0.5rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem', flexWrap: 'wrap', gap: '1rem' }}>
                 <h3 className="project-title" style={{ fontSize: '1.6rem', marginBottom: 0 }}>A decentralized interconnected solar home system</h3>
+                <div className="project-actions">
+                  <motion.a
+                    href="https://drive.google.com/file/d/1ZUeQabeTF5Qc2lIwsOz6OjwdtdCyoStX/view?usp=drivesdk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-project btn-live"
+                    style={{ padding: '0.4rem 1.2rem' }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Resources
+                  </motion.a>
+                </div>
               </div>
               <p className="project-tags" style={{ marginBottom: '2rem' }}>Arduino | Sensors</p>
 
